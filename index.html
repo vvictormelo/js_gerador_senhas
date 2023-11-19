@@ -15,6 +15,7 @@
 <body>
     <main>
         <section class="hero">
+            <img src="vpn_key.svg" alt="">
             <h1 class="title">Gerador de senha</h1>
             <p class="subtitle">Utilize o nosso gerador online para criar uma senha forte e segura.</p>
         </section>
@@ -25,9 +26,10 @@
                     <input type="text" name="password" id="password">
                 </div>
                 <div class="actions">
-                    <button id="copy-1">
+                    <button id="copy-1" >
                         <img src="copy.svg" width="42" alt="copy"/>
                     </button>
+                    
                     <button id="renew">
                         <img src="renew.svg" width="42" alt="renew"/>
                     </button>
@@ -75,9 +77,13 @@
             </div>
         </section>
 
-        <div class="submit">
-            <button id="copy-2">Copiar senha</button>
+        <div class="popup" onclick="openPopup()">
+            <div class="submit">
+                <button id="copy-2">Copiar senha</button>
+            </div>
+            <span class="popuptext" id="copyPopup">Copiado!</span>
         </div>
+        
     </main>
     <script>
 
@@ -175,6 +181,12 @@
 
         function copy () {
             navigator.clipboard.writeText(inputEl.value)
+        }
+
+        function openPopup () {
+            let popup = document.getElementById("copyPopup")
+            popup.classList.toggle("show")
+            popup.classList.toggle(150)
         }
 
         const passwordLengthEl = document.querySelector("#password-length")
